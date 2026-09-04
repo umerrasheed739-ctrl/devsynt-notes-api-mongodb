@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors'; // 1. Import Cors
 import connectDB from './config/db.js';
 import notesRouter from './routes/notes.js';
 
@@ -7,6 +8,8 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+app.use(cors()); // 2. Enable CORS
 app.use(express.json());
 
 app.get('/', (req, res) => {
